@@ -10,7 +10,6 @@
 
 import Header from "./components/Header/Header"
 import Footer from "./components/Footer/Footer"
-// import Accueil from "./components/Accueil/Accueil"
 
 
 export default {
@@ -18,7 +17,6 @@ export default {
   components: {
     "header-top": Header,
     "footer-bottom": Footer,
-    // "Accueil": Accueil,
 
   }
 }

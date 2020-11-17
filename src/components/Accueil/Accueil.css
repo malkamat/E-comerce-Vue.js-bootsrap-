@@ -1,0 +1,15 @@
+.w-100 {
+    margin-top: 56px!important;
+    height: calc(100vh - 56px)!important;
+    opacity: 0.8;
+}
+
+.w-100:hover {
+    cursor: pointer;
+    scale: 1.5;
+}
+
+.carousel-caption {
+    font-size: 30px;
+    background: rgba(0, 0,0, 0.5);
+}
