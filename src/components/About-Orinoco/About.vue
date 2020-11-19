@@ -4,7 +4,7 @@
   <!-- Section heading -->
   <h3 class="text-center mb-4">C'est quoi Orinoco ?</h3>
   <!-- Section description -->
-  <p class="text-center w-sm-75 mx-auto mb-5">Orinoco c'est la nouvelle boutique en ligne mise en place par le magasin Ori situé à Toulouse et qui vous propose des articles vintage fabriqué ou réparé par notre équipe d'artisant.</p>
+  <p class="text-center w-sm-75 mx-auto mb-5">Orinoco c'est la nouvelle boutique en ligne mise en place par le magasin Ori situé à Toulouse et qui vous propose des articles vintage fabriqué ou réparé par notre équipe d'artisants.</p>
 
   <!-- Grid row -->
   <div class="row">

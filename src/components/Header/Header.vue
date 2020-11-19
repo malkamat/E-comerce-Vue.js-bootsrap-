@@ -1,6 +1,6 @@
 <template>
    <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-dark">
-                <a class="navbar-brand text-light " href="index.html">Orinoco</a>
+                <a class="navbar-brand text-light " href="#">Orinoco</a>
                 <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon "></span>
                 </button>
