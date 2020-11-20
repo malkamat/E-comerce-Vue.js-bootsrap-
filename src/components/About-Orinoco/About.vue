@@ -23,7 +23,7 @@
           
           <div>
             <h5>OriTeddies</h5>
-            <p class="mb-4">Un ours en peluche, également appelé nounours par les enfants, ou toutou au Québec, est un jouet en forme d'ourson. Il s'agit d'une forme traditionnelle de peluche, rembourrée avec de la paille, des haricots, ou plus récemment du coton ou du plastique.</p>
+            <p class="mb-4">Ours en peluche, également appelé nounours par les enfants, ou toutou au Québec, est un jouet en forme d'ourson. D'une forme traditionnelle de peluche, rembourrée avec de la paille, des haricots, ou plus récemment du coton ou du plastique.</p>
           </div>
         </li>
         <li class="d-flex justify-content-center pl-4">
