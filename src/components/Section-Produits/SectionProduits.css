@@ -17,7 +17,8 @@
 
 .grid {
     display: grid;
-    grid-template:  100px auto / 1fr 2fr
+    grid-template:  100px auto / 1fr 2fr;
+    min-height: 300px;
 }
 
 .grid-produits {

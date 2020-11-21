@@ -27,8 +27,7 @@ export default {
     
     data() {
       return {
-        // tableauProduits: [],
-        
+
         categories: [
           "teddies" ,
           "furniture",
@@ -39,19 +38,7 @@ export default {
     },
    
     methods: {
-      // getProduits: function(url) {
-      //   axios.get(url)
-      //   .then(response => {
-      //     console.log(response.data);
-      //     this.tableauProduits.push(...response.data)
-      //   })
-      //   this.tableauProduits = []
-        
 
-      // },
-      // getlog: function() {
-      //   console.log(this.slider);
-      // }
     
     },
 

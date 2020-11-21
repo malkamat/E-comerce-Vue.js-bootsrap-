@@ -1,5 +1,5 @@
 <template>
-  <section class="grid">
+  <section   class="grid">
 
      <h3 class="h3-responsive">Séléctionnez une catégorie</h3>
         <div class="buttons">
@@ -8,7 +8,7 @@
 
 
        <div class="grid-produits">
-                 <cartes-accueil :key="index" v-for="(produit,index) in tableauProduits" :produit="produit"></cartes-accueil>
+                 <cartes-accueil :categorie="categorie"  :key="index" v-for="(produit,index) in tableauProduits" :produit="produit"  ></cartes-accueil>
                     
                       </div>
  
@@ -20,6 +20,7 @@
 
 <script>
 import axios from "axios"
+import {bus} from "../../main"
 
 import BoutonCategorie from '../Boutons-Categorie/BoutonCategorie.vue'
 import CartesAccueil from '../Cartes-Accueil/CartesAccueil.vue'
@@ -33,13 +34,16 @@ export default {
     data() {
          return {
                tableauProduits: [],
+               categorie: ""
+             
+            
          }
 
     },
     methods: {
 
       updateTableauProduits: function(urlProd) {
-           
+          
            console.log(urlProd);
         axios.get(urlProd)
         .then(response => {
@@ -48,9 +52,19 @@ export default {
            }
           this.tableauProduits.push(...response.data)
           console.log(this.tableauProduits);
+       
         })
-      }
+      },
+      
+     
     },
+    created() {
+         bus.$on("appelApi", (data) => {
+              this.categorie = data
+              console.log(this.categorie);
+         })
+    }
+    
 
 
 }
