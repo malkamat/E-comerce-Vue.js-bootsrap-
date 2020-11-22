@@ -42,7 +42,7 @@
 							<label class="text-muted">Option :</label>
 							<div>
                     <label class="js-check btn btn-check active">
-                    <input v-model="optionSelected" type="radio" :name="option" :value="option">
+                    <input v-model="optionSelected" type="radio" :name="option" value="">
                     <span>Aucune option</span>
                   </label>
 								<label  :key="index" v-for="(option,index) in produit.varnish||produit.colors||produit.lenses"  class="js-check btn btn-check active">
@@ -100,7 +100,6 @@ export default {
             option: this.optionSelected
 
 }));
-console.log(JSON.parse(localStorage.getItem(this.$route.params.id)).id )
 
       },
 
@@ -116,7 +115,6 @@ console.log(JSON.parse(localStorage.getItem(this.$route.params.id)).id )
        axios.get(`${this.url}${this.$route.params.categorie}/${this.$route.params.id}`)
       .then(response => {
         this.produit = response.data
-        console.log(this.produit);
       })
     }
    

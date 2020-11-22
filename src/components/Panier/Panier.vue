@@ -1,41 +1,45 @@
 <template>
 <div>
       <cartes-panier></cartes-panier>
-        <section class="section-content mt-5 padding-y bg">
+        <section  class="section-content mt-5 padding-y bg">
             <div class="container">
+                
 
             <!-- ============================ COMPONENT 1 ================================= -->
 
             <div class="row">
+
+                
+                
                 <aside class="col-lg-9">
-            <div class="card">
+            <div    class="card">
             <table class="table table-borderless table-shopping-cart">
             <thead class="text-muted">
             <tr class="small text-uppercase">
-            <th scope="col">Product</th>
-            <th scope="col" width="120">Quantity</th>
-            <th scope="col" width="120">Price</th>
+            <th scope="col">Article</th>
+            <th scope="col" width="120">Quantitée</th>
+            <th scope="col" width="120">Prix</th>
             <th scope="col" class="text-right" width="200"> </th>
             </tr>
             </thead>
-            <tbody>
+            <tbody :key="index" v-for="(produit,index) in panier" >
             <tr>
                 <td>
                     <figure class="itemside align-items-center">
-                        <div class="aside"><img src="bootstrap-ecommerce-html/images/items/11.jpg" class="img-sm"></div>
+                        <div class="aside"><img :src="produit.imageUrl" class="img-sm"></div>
                         <figcaption class="info">
-                            <a href="#" class="title text-dark">Camera Canon EOS M50 Kit</a>
+                            <a href="#" class="title text-dark">{{produit.titre}}</a>
                         </figcaption>
                     </figure>
                 </td>
                 <td> 
-                    <strong class="price">$1156.00</strong> 
+                    <strong class="quantite">{{produit.quantite}}</strong> 
 
                 </td>
                 <td> 
                     <div class="price-wrap"> 
-                        <strong class="price">$1156.00</strong> 
-                        <small class="text-muted"> $315.20 each </small> 
+                        <strong class="price">{{produit.singlePrice}} €</strong><br> 
+                        <small class="text-muted"> {{produit.singlePrice}} € / unitée </small> 
                     </div> <!-- price-wrap .// -->
                 </td>
                 <td class="text-right"> 
@@ -43,8 +47,9 @@
                 <a href="" class="btn btn-light mt-3"> Modifier </a>
                 </td>
             </tr>
-           
+            <hr class="col-lg-12">
             </tbody>
+           
             </table>
 
             <div class="card-body border-top">
@@ -53,8 +58,12 @@
 
             </div> <!-- card.// -->
 
+            
+
                 </aside> <!-- col.// -->
-                <aside class="col-lg-3">
+
+
+   <aside class="col-lg-3">
 
             <div class="card mb-3">
             <div class="card-body">
@@ -116,9 +125,11 @@
 
                 </aside> <!-- col.// -->
 
-
             </div> <!-- row.// -->
-            <!-- ============================ COMPONENT 1 END .// ================================= -->
+            
+            
+              
+               
 
 
 
@@ -135,8 +146,11 @@ export default {
     components: {
         "cartes-panier": CartesPanier
     },
+    
     data() {
         return {
+            panier: [],
+            test: 1,
             formData: {
                 contact: {
 
@@ -144,11 +158,44 @@ export default {
                 categorie: ""
             }
         }
-    }
+    },
+    methods: {
+        monPanier: function() {  
+        
+            
+            if(localStorage.length > 0) {
+                   if(localStorage.getItem("loglevel:webpack-dev-server")) {
+          localStorage.removeItem("loglevel:webpack-dev-server")
+        }
+            let i = 0
+            this.panier = []
 
-}
+        for(i  ; i<localStorage.length; i++) {
+        this.panier.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        console.log(window.location);
+    
+      }
+      
+
+            } 
+
+      }
+        },
+        mounted() {
+            this.monPanier()
+        }
+        
+      
+    }
+ 
+
 </script>
 
-<style>
+<style scoped>
+
+aside img {
+    height: 150px;
+    object-fit: cover;
+}
 
 </style>

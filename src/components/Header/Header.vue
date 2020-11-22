@@ -1,13 +1,13 @@
 <template>
    <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-dark">
-                <router-link class="navbar-brand text-light " to="/">Orinoco</router-link>
+                <router-link class="navbar-brand text-light " to="/">  Orinoco</router-link>
                 <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon "></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a @updateHeader="test($event)"  class="nav-link text-light " href="#">Mon panier ({{qts}}) <i class="fas fa-shopping-bag"></i></a>
+                      <router-link to="/panier"  class="nav-link text-light " href="#">Mon panier ({{qts}}) <i class="fas fa-shopping-bag"></i></router-link>
                     </li>
                     <li class="nav-item">
                       <router-link class="nav-link text-light " to="/">Accueil <i class="fas fa-store-alt"></i></router-link>
@@ -48,13 +48,10 @@ export default {
         for(i  ; i<localStorage.length; i++) {
         this.panier.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
         this.qts =  this.qts + this.panier[i].quantite
-        
-        console.log(this.i);
-        console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        
+    
       }
 
-      return this.qts , console.log(this.panier);
+      return this.qts 
       }
       
     },
@@ -65,7 +62,9 @@ export default {
         bus.$on("updateHeader", () => {
         this.calculPanier()
       }) 
-    }
+    },
+  
+   
     
     
 

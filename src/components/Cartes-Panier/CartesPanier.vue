@@ -4,7 +4,8 @@
 
 <script>
 export default {
-    name: "CartesPanier"
+	name: "CartesPanier",
+	
 
 }
 </script>

@@ -44,14 +44,13 @@ export default {
 
       updateTableauProduits: function(urlProd) {
           
-           console.log(urlProd);
+  
         axios.get(urlProd)
         .then(response => {
              if (this.tableauProduits !== []) {
                 this.tableauProduits = []        
            }
           this.tableauProduits.push(...response.data)
-          console.log(this.tableauProduits);
        
         })
       },
@@ -61,7 +60,7 @@ export default {
     created() {
          bus.$on("appelApi", (data) => {
               this.categorie = data
-              console.log(this.categorie);
+
          })
     }
     
