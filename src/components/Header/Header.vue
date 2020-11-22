@@ -48,7 +48,7 @@ export default {
         for(i  ; i<localStorage.length; i++) {
         this.panier.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
         this.qts =  this.qts + this.panier[i].quantite
-        // console.log(localStorage.length);
+        
         console.log(this.i);
         console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
         

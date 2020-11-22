@@ -20,7 +20,7 @@
 							</figcaption>
 						</figure> 
 					</div> <!-- col.// -->
-					<div class="col"> 
+					<div class="col-md-3"> 
 						<div class="input-group input-spinner">
 							<div class="input-group-prepend">
 							<button v-if="nbProduit > 1" @click="nbProduit--" class="btn btn-light" type="button" id="button-plus"> <i class="fa fa-minus"></i> </button>
@@ -42,11 +42,11 @@
 							<label class="text-muted">Option :</label>
 							<div>
                     <label class="js-check btn btn-check active">
-                    <input type="radio" name="option_size" value="option1" checked="">
+                    <input v-model="optionSelected" type="radio" :name="option" :value="option">
                     <span>Aucune option</span>
                   </label>
 								<label  :key="index" v-for="(option,index) in produit.varnish||produit.colors||produit.lenses"  class="js-check btn btn-check active">
-									<input type="radio" name="option_size" value="option1">
+									<input v-model="optionSelected" type="radio" :name="option" :value="option">
 									<span>{{option}}</span>
 								</label>
 							
@@ -77,7 +77,7 @@ export default {
         produit: [],
         longueur: 0,
         nbProduit: 1,
-        test: ""
+        optionSelected: ""
         
       }
     },
@@ -96,7 +96,8 @@ export default {
             quantite: this.nbProduit,
             imageUrl: this.produit.imageUrl,
             titre: this.produit.name,
-            categorie: this.$route.params.categorie
+            categorie: this.$route.params.categorie,
+            option: this.optionSelected
 
 }));
 console.log(JSON.parse(localStorage.getItem(this.$route.params.id)).id )
@@ -109,8 +110,6 @@ console.log(JSON.parse(localStorage.getItem(this.$route.params.id)).id )
       }
 
       
-    
-
     },
    
     created() {
