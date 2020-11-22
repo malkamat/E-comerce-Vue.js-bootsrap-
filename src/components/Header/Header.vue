@@ -7,7 +7,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a  class="nav-link text-light " href="#">Mon Panier ({{qts}}) <i class="fas fa-shopping-bag"></i></a>
+                      <a @updateHeader="test($event)"  class="nav-link text-light " href="#">Mon panier ({{qts}}) <i class="fas fa-shopping-bag"></i></a>
                     </li>
                     <li class="nav-item">
                       <router-link class="nav-link text-light " to="/">Accueil <i class="fas fa-store-alt"></i></router-link>
@@ -22,37 +22,52 @@
 
 <script>
 
+import {bus} from "../../main"
+
 export default {
     name: "Header",
     data() {
         return {
           qts: 0,
           panier: [],
-          i: 0
+
 
         }
     },
     methods: {
+
       calculPanier: function() {
-        for(this.i ; this.i<localStorage.length; this.i++) {
-        this.panier.push(JSON.parse(localStorage.getItem(localStorage.key(this.i))));
-        this.qts +=  this.panier[this.i].quantite
-        console.log(JSON.parse(localStorage.getItem(localStorage.key(this.i))));
+        
+        if(localStorage.getItem("loglevel:webpack-dev-server")) {
+          localStorage.removeItem("loglevel:webpack-dev-server")
+        }
+        let i = 0
+        this.panier = []
+        this.qts = 0
+
+        for(i  ; i<localStorage.length; i++) {
+        this.panier.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        this.qts =  this.qts + this.panier[i].quantite
+        // console.log(localStorage.length);
+        console.log(this.i);
+        console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        
       }
-      this.i = 0
-      return this.qts
+
+      return this.qts , console.log(this.panier);
       }
-      
       
     },
- 
-    
+
+   
     created() {
       this.calculPanier()
-   
-    },
-   
-
+        bus.$on("updateHeader", () => {
+        this.calculPanier()
+      }) 
+    }
+    
+    
 
 }
 </script>

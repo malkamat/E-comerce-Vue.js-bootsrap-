@@ -53,7 +53,7 @@
 							</div>						
 						</div>
             <div class="form-group col-md">
-						<a @click="ajouterAuPanier()" class="btn btn-primary"> <span class="text">Ajouter au panier</span> <i class="fas fa-shopping-cart"></i> </a>
+						<a @click="ajouterAuPanier();updateHeader() " class="btn btn-primary"> <span class="text">Ajouter au panier</span> <i class="fas fa-shopping-cart"></i> </a>
 					</div>
 				</div> <!-- row.// -->
 			</article>
@@ -68,6 +68,7 @@
 
 <script>
 import axios from "axios"
+import {bus} from "../../main"
 export default {
     name: "Produit",
     data() {
@@ -98,8 +99,16 @@ export default {
             categorie: this.$route.params.categorie
 
 }));
-console.log(JSON.parse(localStorage.getItem(this.$route.params.id)).id ) 
+console.log(JSON.parse(localStorage.getItem(this.$route.params.id)).id )
+
+      },
+
+      updateHeader:function() {
+       bus.$emit("updateHeader") 
+       this.$router.push(`/`)
       }
+
+      
     
 
     },
