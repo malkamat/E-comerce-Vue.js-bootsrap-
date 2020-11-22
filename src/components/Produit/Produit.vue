@@ -53,7 +53,7 @@
 							</div>						
 						</div>
             <div class="form-group col-md">
-						<a href="#" class="btn btn-primary"> <span class="text">Ajouter au panier</span> <i class="fas fa-shopping-cart"></i> </a>
+						<a @click="ajouterAuPanier()" class="btn btn-primary"> <span class="text">Ajouter au panier</span> <i class="fas fa-shopping-cart"></i> </a>
 					</div>
 				</div> <!-- row.// -->
 			</article>
@@ -75,7 +75,9 @@ export default {
         url: "http://localhost:3000/api/",
         produit: [],
         longueur: 0,
-        nbProduit: 1
+        nbProduit: 1,
+        test: ""
+        
       }
     },
     methods: {
@@ -86,13 +88,22 @@ export default {
        return ` ${produitPrix.toString().split("").splice(" " ,this.longueur - 2).join("")}.${produitPrix.toString().split("").splice(this.longueur - 2, this.longueur - 1).join("")} €`
         
       },
+      ajouterAuPanier: function() {
+        localStorage.setItem(this.$route.params.id, JSON.stringify({
+            id: this.$route.params.id,
+            singlePrice: this.produit.price,
+            quantite: this.nbProduit,
+            imageUrl: this.produit.imageUrl,
+            titre: this.produit.name,
+            categorie: this.$route.params.categorie
+
+}));
+console.log(JSON.parse(localStorage.getItem(this.$route.params.id)).id ) 
+      }
     
 
     },
-    watch: {
-      
-
-    },
+   
     created() {
        axios.get(`${this.url}${this.$route.params.categorie}/${this.$route.params.id}`)
       .then(response => {

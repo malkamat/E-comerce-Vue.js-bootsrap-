@@ -7,7 +7,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link text-light " href="#">Mon Panier (0) <i class="fas fa-shopping-bag"></i><span class="sr-only">(current)</span></a>
+                      <a  class="nav-link text-light " href="#">Mon Panier ({{qts}}) <i class="fas fa-shopping-bag"></i></a>
                     </li>
                     <li class="nav-item">
                       <router-link class="nav-link text-light " to="/">Accueil <i class="fas fa-store-alt"></i></router-link>
@@ -26,9 +26,32 @@ export default {
     name: "Header",
     data() {
         return {
+          qts: 0,
+          panier: [],
+          i: 0
 
         }
     },
+    methods: {
+      calculPanier: function() {
+        for(this.i ; this.i<localStorage.length; this.i++) {
+        this.panier.push(JSON.parse(localStorage.getItem(localStorage.key(this.i))));
+        this.qts +=  this.panier[this.i].quantite
+        console.log(JSON.parse(localStorage.getItem(localStorage.key(this.i))));
+      }
+      this.i = 0
+      return this.qts
+      }
+      
+      
+    },
+ 
+    
+    created() {
+      this.calculPanier()
+   
+    },
+   
 
 
 }
