@@ -42,11 +42,11 @@
 							<label class="text-muted">Option :</label>
 							<div>
                     <label class="js-check btn btn-check active">
-                    <input v-model="optionSelected" type="radio" :name="option" value="">
+                    <input v-model="optionSelected" type="radio" name="option" >
                     <span>Aucune option</span>
                   </label>
 								<label  :key="index" v-for="(option,index) in produit.varnish||produit.colors||produit.lenses"  class="js-check btn btn-check active">
-									<input v-model="optionSelected" type="radio" :name="option" :value="option">
+									<input v-model="optionSelected" type="radio" name="option" :value="option">
 									<span>{{option}}</span>
 								</label>
 							
@@ -105,7 +105,7 @@ export default {
 
       updateHeader:function() {
        bus.$emit("updateHeader") 
-       this.$router.push(`/`)
+       this.$router.push(`/panier`)
       }
 
       

@@ -1,0 +1,8 @@
+aside img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.section-content {
+    padding: 50px 0 50px 0;
+}
